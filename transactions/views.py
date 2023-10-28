@@ -130,14 +130,119 @@ def recent_withdrawals(request):
     context = {'recent_withdrawals': recent_withdrawals}
     return render(request, 'transactions/withdraw.html', context)
 
+from django.http import HttpResponse
+
+import os
+from django.conf import settings
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
+from io import BytesIO
+
+def generate_pdf(data_list, logo_path):
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    elements = []
+
+    # Add your company logo or image
+    image_path = os.path.join(os.path.abspath(os.path.join(settings.BASE_DIR, 'static')), logo_path)  # Update with your logo path
+    logo = Image(image_path, width=200, height=100)
+    elements.append(logo)
+
+    styles = getSampleStyleSheet()
+    style_heading = styles['Heading1']
+    style_normal = styles['Normal']
+
+    section_titles = ["Deposits History", "Local Transfers", "International Transfers"]
+
+    for i, data in enumerate(data_list):
+        # Add section heading
+        section_heading = Paragraph(section_titles[i], style_heading)
+        elements.append(section_heading)
+
+        # Define style for the table
+        style = TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ])
+
+        # Configure style
+        elements.append(Table(data, style=style))
+
+    doc.build(elements)
+    pdf = buffer.getvalue()
+    buffer.close()
+    return pdf
 
 
 def recent_international_withdrawals(request):
     recent_international_withdrawals = Withdrawal_internationa.objects.order_by('-date', '-timestamp')[:10]
     recent_withdrawals = Withdrawal.objects.order_by('-date', '-timestamp')[:10]
-    context = {'recent_international_withdrawals': recent_international_withdrawals,'recent_withdrawals': recent_withdrawals}
-    return render(request, 'transactions/withdraw_international.html', context)
+    recent_payments = Payment.objects.order_by('-date', '-timestamp')[:10]
 
+    context = {
+        'recent_international_withdrawals': recent_international_withdrawals,
+        'recent_withdrawals': recent_withdrawals,
+        'recent_payments': recent_payments
+    }
+
+    if 'export' in request.GET and request.GET['export'] == 'pdf':
+        # Prepare data for the PDF
+        data_list = []
+
+        # Deposit History Data
+        data_payments = [['User', 'Amount', 'Method', 'Status', 'Date']]
+        for payment in recent_payments:
+            data_payments.append([
+                str(payment.user),
+                str(payment.amount),
+                payment.payment_method,
+                payment.status,
+                str(payment.date)
+            ])
+        data_list.append(data_payments)
+
+        # Local Transfers Data
+        data_withdrawals = [['User', 'Amount', 'Status', 'Date', 'Target', 'Recipient Bank Name', 'Account Number']]
+        for withdrawal in recent_withdrawals:
+            data_withdrawals.append([
+                str(withdrawal.user),
+                str(withdrawal.amount),
+                withdrawal.status,
+                str(withdrawal.date),
+                withdrawal.target,
+                withdrawal.recipient_bank_name,
+                withdrawal.account_number,
+            ])
+        data_list.append(data_withdrawals)
+
+        # International Transfers Data
+        data_international_withdrawals = [['User', 'Amount', 'Status', 'Date', 'Target', 'Recipient Bank Name', 'Account Number']]
+        for withdrawal in recent_international_withdrawals:
+            data_international_withdrawals.append([
+                str(withdrawal.user),
+                str(withdrawal.amount),
+                withdrawal.status,
+                str(withdrawal.date),
+                withdrawal.target,
+                withdrawal.recipient_bank_name,
+                withdrawal.account_number,
+            ])
+        data_list.append(data_international_withdrawals)
+
+        logo_path = 'ukrex.png'  # Update with your logo path
+        pdf = generate_pdf(data_list, logo_path)
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="Account History.pdf"'
+        response.write(pdf)
+        return response
+    else:
+        return render(request, 'transactions/withdraw_international.html', context)
 
 
 def recent_payments(request):
