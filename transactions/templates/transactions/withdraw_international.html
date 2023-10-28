@@ -19,7 +19,7 @@
                                     <div class="nk-block-head-content">
 <ul class="nk-block-tools gx-3">
     <li>
-        <a href="/" class="btn btn-secondary btn-light text-light">
+        <a href="{% url 'transactions:export_pdf' %}?export=pdf" class="btn btn-secondary btn-light text-light">
             <span>Export Request</span><em class="icon ni ni-wallet-out"></em>
         </a>
     </li>
@@ -37,12 +37,12 @@
             <table id="summary-table" class="datatable-init table">
                 <thead>
                     <tr>
-                        <th>Ref</th>
-                        <th>Type</th>
-                        <th>Scope</th>
-                        <th>Amount</th>
                         <th>Date</th>
-                        <th>Description</th>
+                        <th>Time</th>
+                        <th>Recipient</th>
+                        <th>Bank</th>
+                        <th>Type</th>
+                        <th>Amount</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@
             <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
             <td>{{ withdrawal.target }}</td>
             <td>{{ withdrawal.recipient_bank_name }}</td>
-            <td>{{ withdrawal.account_number }}</td>
+            <td>INTERNATIONAL TRANSFER</td>
             <td>{{ withdrawal.amount }}</td>
             <td style="color: green;">{{ withdrawal.status|title }}</td>
 
@@ -69,7 +69,7 @@
             <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
             <td>{{ withdrawal.target }}</td>
             <td>{{ withdrawal.recipient_bank_name }}</td>
-            <td>{{ withdrawal.account_number }}</td>
+            <td>LOCAL TRANSFER</td>
             <td>{{ withdrawal.amount }}</td>
             <td style="color: green;">{{ withdrawal.status|title }}</td>
           </tr>
