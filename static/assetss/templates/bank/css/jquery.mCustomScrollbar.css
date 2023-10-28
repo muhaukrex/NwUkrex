@@ -1,0 +1,219 @@
+.mCustomScrollbar .mCustomScrollBox {
+    padding-bottom: 42px
+}
+
+.mCS_no_scrollbar .mCustomScrollBox {
+    padding-bottom: 0px
+}
+
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: none;
+    direction: ltr
+}
+
+.mCSB_container {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    z-index: 1
+}
+
+.mCSB_inside>.mCSB_container {
+    margin-right: 0px
+}
+
+.mCSB_scrollTools {
+    position: absolute;
+    width: 5px;
+    height: auto;
+    left: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2
+}
+
+.mCSB_scrollTools .mCSB_draggerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: auto;
+    margin: 0 41px
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+    width: 5px;
+    height: 100%;
+    margin: 0
+}
+
+.mCSB_scrollTools .mCSB_dragger {
+    cursor: pointer;
+    width: 100%;
+    height: 5px;
+    z-index: 1
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    position: relative;
+    width: 5px;
+    height: 100%;
+    margin: 0;
+    text-align: center
+}
+
+.mCSB_vertical.mCSB_inside>.mCSB_container {
+    margin-right: 0px
+}
+
+.mCSB_horizontal.mCSB_inside>.mCSB_container {
+    margin-right: 0;
+    margin-bottom: 0px
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+    width: auto;
+    height: 40px;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+    width: 100%;
+    height: 40px;
+    margin: 0
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger {
+    width: 40px;
+    height: 100%;
+    left: 0
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+    width: 100%;
+    height: 40px;
+    margin: 0
+}
+
+.mCSB_buttonLeft,
+.mCSB_buttonRight {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 0;
+    background: #ccc;
+    display: block;
+    cursor: pointer;
+    -webkit-appearance: none
+}
+
+.mCSB_buttonLeft span,
+.mCSB_buttonRight span {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease
+}
+
+.mCSB_buttonLeft span:before,
+.mCSB_buttonLeft span:after,
+.mCSB_buttonRight span:before,
+.mCSB_buttonRight span:after {
+    content: "";
+    position: absolute;
+    display: block;
+    background: #fff
+}
+
+.mCSB_buttonLeft span:before,
+.mCSB_buttonRight span:before {
+    height: 2px;
+    width: 100%
+}
+
+.mCSB_buttonLeft span:after,
+.mCSB_buttonRight span:after {
+    height: 100%;
+    width: 2px
+}
+
+.mCSB_buttonLeft.mCSB_buttonLeft,
+.mCSB_buttonRight.mCSB_buttonLeft {
+    left: 0;
+    padding-left: 5px
+}
+
+.mCSB_buttonLeft.mCSB_buttonLeft span:before,
+.mCSB_buttonRight.mCSB_buttonLeft span:before {
+    bottom: 0
+}
+
+.mCSB_buttonLeft.mCSB_buttonLeft span:after,
+.mCSB_buttonRight.mCSB_buttonLeft span:after {
+    left: 0
+}
+
+.mCSB_buttonLeft.mCSB_buttonRight,
+.mCSB_buttonRight.mCSB_buttonRight {
+    right: 0;
+    padding-right: 5px
+}
+
+.mCSB_buttonLeft.mCSB_buttonRight span:before,
+.mCSB_buttonRight.mCSB_buttonRight span:before {
+    top: 0
+}
+
+.mCSB_buttonLeft.mCSB_buttonRight span:after,
+.mCSB_buttonRight.mCSB_buttonRight span:after {
+    right: 0
+}
+
+.mCSB_buttonLeft:hover span,
+.mCSB_buttonRight:hover span {
+    -webkit-transform: rotate(45deg) scale(1.2);
+    -moz-transform: rotate(45deg) scale(1.2);
+    -o-transform: rotate(45deg) scale(1.2);
+    transform: rotate(45deg) scale(1.2)
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #ededed
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    border-radius: 0px;
+    background-color: #cccccc
+}
+
+.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+    background-color: #cccccc
+}
+
+/*# sourceMappingURL=jquery.mCustomScrollbar.css.map */
