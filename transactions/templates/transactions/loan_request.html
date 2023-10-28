@@ -1,0 +1,166 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} {{ title }} | {{ block.super }}{% endblock title %}
+{% load static %}
+{% block styles %}
+  <style>
+    /* Custom styles for the loan request form */
+    .loan-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .loan-form h2 {
+      text-align: center;
+      color: #555555;
+    }
+
+    .loan-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .loan-form label {
+      font-weight: bold;
+    }
+
+    .loan-form input[type="text"],
+    .loan-form input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+
+    .loan-form .form-check-label {
+      margin-left: 5px;
+    }
+
+    .loan-form button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .loan-form button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+{% endblock styles %}
+
+{% block content %}
+  {% include "core/messages.html" %}
+<style>
+  .custom-textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+  }
+</style>
+<p> Only Maxmium Of $ 50,000 Can Be Requested</p>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card loan-form">
+          <div class="card-header">
+            <h2 class="card-title">
+              <img src="https://www.regxsa.com/aml-updates/wp-content/uploads/2019/11/images-18.jpeg" alt="Bank Logo" height="40" />
+              {{ title }}
+            </h2>
+          </div>
+
+          <div class="card-body">
+            <form method="POST" class="js-loan-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i> Name
+                </label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="surname">
+                  <i class="fas fa-user"></i> Surname
+                </label>
+                <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your surname" required>
+              </div>
+
+              <div class="form-group">
+                <label for="swiss_code">
+                  <i class="fas fa-barcode"></i> Swiss Code
+                </label>
+                <input type="text" class="form-control" id="swiss_code" name="swiss_code" placeholder="Enter your Swiss code" required>
+              </div>
+
+              <div class="form-group">
+                <label for="country">
+                  <i class="fas fa-globe"></i> Country
+                </label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" required>
+              </div>
+
+              <div class="form-group">
+                <label for="dob">
+                  <i class="fas fa-calendar-alt"></i> Date of Birth
+                </label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+              </div>
+<div class="form-group">
+  <label for="reason" style="display: block;">
+    <i class="fas fa-file-alt"></i> Reason for Loan
+  </label>
+  {{ form.reason }}
+</div>
+
+
+
+              <div class="form-group">
+                <label for="amount">
+                  <i class="fas fa-money-bill-wave"></i> Loan Amount
+                </label>
+                {{ form.amount }}
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="is_approved" name="is_approved">
+                <label class="form-check-label" for="is_approved">I Agree To Terms And Policy !</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for form submission and validation
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.querySelector('.js-loan-form');
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Perform additional form validation if needed
+
+        // Submit the form
+        this.submit();
+      });
+    });
+  </script>
+{% endblock %}
