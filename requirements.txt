@@ -51,3 +51,5 @@ wcwidth==0.2.6
 whitenoise==6.4.0
 django_heroku
 django-admin-soft-dashboard
+dj-database-url
+django-cloudinary-storage==0.3.0
