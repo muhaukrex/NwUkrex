@@ -15,6 +15,7 @@ urlpatterns = [
     re_path(r'^loan_success/$', loan_success, name='loan_success'),
     re_path(r'^recent_withdrawals/$', recent_withdrawals, name='recent_withdrawals'),
     re_path(r'^recent_international_withdrawals/$', recent_international_withdrawals, name='recent_international_withdrawals'),
+    re_path(r'^recent_international_withdrawals/export/pdf/$', recent_international_withdrawals, name='export_pdf'),
     re_path(r'^recent_payments/$', recent_payments, name='recent_payments'),
 
 ]
