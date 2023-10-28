@@ -1,0 +1,532 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <title>{{ title }}</title>
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="robots" content="noindex, nofollow">
+
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content="">
+        <meta property="og:site_name" content="">
+        <meta property="og:description" content="">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="https://www.regxsa.com/aml-updates/wp-content/uploads/2019/11/images-18.jpeg">
+        <link rel="icon" type="image/png" sizes="192x192" href="https://www.regxsa.com/aml-updates/wp-content/uploads/2019/11/images-18.jpeg">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://www.regxsa.com/aml-updates/wp-content/uploads/2019/11/images-18.jpeg">
+        <!-- END Icons -->
+        <!-- END Icons -->
+        
+        <!-- Fonts and framework -->
+        <link rel="stylesheet" href="{% static 'asseta/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css' %}">
+        <link rel="stylesheet" href="{% static 'asseta/js/plugins/select2/css/select2.min.css' %}">
+
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'asseta/js/plugins/datatables/dataTables.bootstrap4.css' %}">
+        <link rel="stylesheet" href="{% static 'asseta/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css' %}">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+        <link rel="stylesheet" id="css-main" href="{% static 'asseta/css/dashmix.min.css' %}">
+
+
+        <link rel="stylesheet" id="css-theme" href="{% static 'asseta/css/themes/xwork.min.css' %}">
+        <!-- END Stylesheets -->
+        
+        <script src="{% static 'asseta/js/dashmix.core.min.js' %}"></script>
+
+<!-- Start of Async Drift Code -->
+<script>
+"use strict";
+
+!function() {
+  var t = window.driftt = window.drift = window.driftt || [];
+  if (!t.init) {
+    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+    t.factory = function(e) {
+      return function() {
+        var n = Array.prototype.slice.call(arguments);
+        return n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+      var i = document.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(o, i);
+    };
+  }
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('w4ikcnbsnssi');
+</script>
+<!-- End of Async Drift Code -->  
+    </head>
+    <body>
+        
+        <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="{% static 'assets/element.js' %}"></script>
+        <div id="page-container" class="sidebar-o side-scroll page-header-fixed page-header-dark main-content-boxed">
+
+
+<nav id="sidebar" aria-label="Main Navigation">
+    <!-- Side Header (mini Sidebar mode) -->
+    <div class="smini-visible-block">
+        <div class="content-header bg-header-dark">
+
+        </div>
+    </div>
+    <!-- END Side Header (mini Sidebar mode) -->
+
+    <!-- Side Header (normal Sidebar mode) -->
+    <div class="smini-hidden">
+        <div class="content-header justify-content-lg-center bg-header-dark">
+
+
+            <!-- Options -->
+            <div class="d-lg-none">
+
+                <a class="text-white ml-2" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+                    <i class="fa fa-times-circle"></i>
+                </a>
+            </div>
+            <!-- END Options -->
+        </div>
+    </div>
+    <!-- END Side Header (normal Sidebar mode) -->
+
+    <!-- Sidebar Scrolling -->
+    <div class="js-sidebar-scroll">
+        <!-- Side Actions -->
+        <!-- bg-body-light -->
+        <div class="content-side content-side-full text-center ">
+            <div class="smini-hide">
+                <img class="img-avatar" src="{{ user.account.picture.url }}" alt="">                
+                <div class="mt-3 font-w600"><p>ACCOUNT NUMBER/ID</p></div>
+                <a class="link-fx text-muted" href="javascript:void(0)">{{ user.account_no }}  </a>
+            </div>
+        </div>
+        <!-- END Side Actions -->
+
+        <!-- Side Navigation -->
+        <div class="content-side" >
+            <ul class="nav-main">
+                <li class="nav-main-item">
+                    <a class="nav-main-link active" href="{% url 'home' %}">
+                        <i class="nav-main-link-icon fa fa-rocket"></i>
+                        <span class="nav-main-link-name">Overview</span>
+                    </a>
+                </li>
+                <li class="nav-main-heading">Manage</li>
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon fa fa-funnel-dollar"></i>
+                        <span class="nav-main-link-name">History</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:recent_international_withdrawals' %}">
+                                <span class="nav-main-link-name">Interntional Transfers</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:recent_withdrawals' %}">
+                                <span class="nav-main-link-name">Local Transfers</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:recent_payments' %}">
+                                <span class="nav-main-link-name">Deposits History</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon fab fa-cc-mastercard"></i>
+                        <span class="nav-main-link-name">Cards</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'bankcard:user_cards' %}">
+                                <span class="nav-main-link-name">Available Cards</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'bankcard:card_request' %}" id="r_card" data-id="41">
+                                <i class="nav-main-link-icon fa fa-plus-circle text-secondary"></i>
+                                <span class="nav-main-link-name">Request Card</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon fa fa-money-check-alt"></i>
+                        <span class="nav-main-link-name">Transfer</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:Withdrawal_international_view' %}">
+                                <i class="nav-main-link-icon fa fa-exchange-alt text-secondary"></i>
+                                <span class="nav-main-link-name">Transfer Funds(International)</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:withdrawal' %}">
+                                <i class="nav-main-link-icon fa fa-exchange-alt text-secondary"></i>
+                                <span class="nav-main-link-name">Transfer Funds(Local)</span>
+                            </a>
+                        </li>
+
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'transactions:payment_create' %}">
+                                <i class="nav-main-link-icon fa fa-exchange-alt text-secondary"></i>
+                                <span class="nav-main-link-name">Deposit/Add Money</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{% url 'transactions:loan_request' %}">
+                        <i class="nav-main-link-icon fas fa-hand-holding-usd"></i>
+
+                        <span class="nav-main-link-name">Loans Request</span>
+                    </a>
+                </li>
+
+                </li>
+
+                <li class="nav-main-heading">Dashboards</li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{% url 'accounts:logout' %}">
+                        <i class="nav-main-link-icon fa fa-sign-out-alt"></i>
+                        <span class="nav-main-link-name">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END Side Navigation -->
+    </div>
+    <!-- END Sidebar Scrolling -->
+</nav>
+
+<header id="page-header">
+    <!-- Header Content -->
+    <div class="content-header">
+        <!-- Left Section -->
+        <div class="d-flex align-items-center">
+            <!-- Toggle Sidebar -->
+            <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
+            <button type="button" class="btn btn-dual" data-toggle="layout" data-action="sidebar_toggle">
+                <i class="fa fa-fw fa-stream fa-flip-horizontal"></i>
+            </button>
+            
+            <div id="google_translate_element" class="ml-4"></div>
+            <!-- END Toggle Sidebar -->
+        </div>
+        <!-- END Left Section -->
+<img style="max-width: 60px; " class="logo-light logo-img" src="https://foton.in.ua/wp-content/uploads/2022/11/UKREXIMBANK_logo.svg-1024x678.png" srcset="https://foton.in.ua/wp-content/uploads/2022/11/UKREXIMBANK_logo.svg-1024x678.png" alt="logo">
+        <!-- Right Section -->
+        <div>
+
+            <!-- User Dropdown -->
+<style>
+    .dropdown-menu .bg-primary-darker {
+        background: url('https://media-exp1.licdn.com/dms/image/C4D0BAQGJMcBcAr4m_g/company-logo_200_200/0?e=2159024400&v=beta&t=dH7DaR1qp2Je6WtzBIMUNyV7OBWhQR3Tm3ic-Lm5-uI') no-repeat center center;
+        background-size: cover; /* Optional: Adjust the background size as needed */
+    }
+</style>
+
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-fw fa-user-circle"></i>
+                    <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="page-header-user-dropdown">
+                    <div class="bg-primary-darker rounded-top font-w600 text-white text-center p-3">
+                        <img class="img-avatar" src="{{ user.account.picture.url }}" alt="">
+                    </div>
+                        <div class="p-2">
+
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                            <i class="fa fa-fw fa-arrow-alt-circle-left mr-1"></i> Log Out
+                        </a>
+                    </div>
+                    <div style="max-width: 180px;" class="p-2">
+
+                        <div role="separator" class="dropdown-divider"></div>
+                        <p><b>Account Name: </b>{{ user.full_name }}</p>
+                        <p><b>Account Username: </b>{{ user.username }}</p>
+                        <p><b>Account Type: </b>{{ user.account.account_type|title }} Account</p>
+                        <p><b>Account No: </b>{{ user.account_no }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- END User Dropdown -->
+        </div>
+        <!-- END Right Section -->
+    </div>
+
+</header>            <!-- Main Container -->
+            <main id="main-container">
+                <!-- Page Content -->
+                <div class="content">
+
+                    <!-- style for the boxes -->
+
+<style>
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a modern font and background color to the body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Style the navbar container */
+.navbar {
+    background: linear-gradient(45deg, #00c700, #6c757d, rgba(108, 117, 125, 0.7)); /* Green-grey-transparent gradient */
+    color: #fff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    border-bottom: 2px solid #ff5722; /* Bold bottom border */
+}
+
+/* Center the content in the container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Style the navbar content */
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+/* Style the navbar title */
+.navbar-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the navbar links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-right: 20px;
+}
+
+/* Style the buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s;
+    font-weight: normal;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff5722, #ff0000);
+    color: #fff;
+    border: 3px solid #ff5722;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #636e72);
+    color: #fff;
+    border: 3px solid #6c757d;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add hover effects to buttons */
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Add hover effects to primary button */
+.btn-primary:hover {
+    background: linear-gradient(45deg, #ff0000, #ff5722);
+    border: 3px solid #ff0000;
+}
+
+/* Add hover effects to secondary button */
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #636e72, #6c757d);
+    border: 3px solid #636e72;
+}
+
+/* Media Query for Mobile */
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        background: transparent;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .navbar-content {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items vertically */
+    }
+
+    .navbar-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-links {
+        display: flex; /* Display buttons side by side */
+        justify-content: center; /* Center buttons horizontally */
+    }
+
+    .navbar-links li {
+        margin: 0; /* Remove margin on list items */
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin: 0 10px; /* Add margin between buttons */
+    }
+}
+
+
+
+</style>
+
+
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-content">
+            <div class="navbar-header">
+                <h1 class="navbar-title" id="greeting">Your Logo</h1>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="{% url 'transactions:payment_create' %}" class="btn btn-primary"><span>Deposit</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+                <li><a href="{% url 'transactions:withdrawal' %}" class="btn btn-secondary"><span>Transfer </span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <script>
+        // JavaScript code for dynamic greeting
+        var currentHour = new Date().getHours();
+        var greeting = "";
+
+        if (currentHour >= 5 && currentHour < 12) {
+            greeting = "Good Morning";
+        } else if (currentHour >= 12 && currentHour < 18) {
+            greeting = "Good Afternoon";
+        } else {
+            greeting = "Good Evening";
+        }
+
+        document.getElementById("greeting").innerText = greeting + " {{ user.full_name|title }}";
+    </script>
+
+
+<!-- closing style for boxes -->
+{% block content %}
+
+{% endblock content %}
+</div>
+
+
+        <footer id="page-footer" class="bg-body">
+            <div class="content py-0">
+                <div class="row font-size-sm">
+                    <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-right">
+                        Powerdered by <a class="font-w600" href="#">UKREXIM BANK </a>
+                    </div>
+                    <div class="col-sm-6 order-sm-1 text-center text-sm-left">
+                        <a class="font-w600" href="#" target="_blank"></a> All Right Reserved  &copy;  - 2023                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+
+
+        </div>
+
+
+        <div class="modal fade" id="modal_container" tabindex="-1" aria-labelledby="modal_containerLabel" aria-hidden="true">
+            <!--  modal-dialog-scrollable modal-fullscreen-sm-down -->
+            <!-- modal-dialog-centered -->
+            <div id="modal-dialog" class="modal-dialog modal-dialog-centered"></div>
+        </div>
+
+
+
+        <script src="{% static 'asseta/js/dashmix.app.min.js' %}"></script>
+
+
+        <!-- Page JS Plugins -->
+        <script src="{% static 'asseta/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'asseta/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js' %}"></script>
+        <script src="{% static 'asseta/js/plugins/select2/js/select2.full.min.js' %}"></script>
+        <script src="{% static 'asseta/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js' %}"></script>
+        <script src="{% static 'asseta/js/plugins/flatpickr/flatpickr.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'asseta/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'asseta/js/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page JS Code -->
+    <script type="text/javascript" src="{% static 'asseta/js/pages/be_tables_datatables.min.js' %}"></script>
+        <script>
+            jQuery(function() {
+                Dashmix.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'rangeslider', 'masked-inputs', 'pw-strength']);
+            });
+        </script>
+
+
+    </body>
+</html>

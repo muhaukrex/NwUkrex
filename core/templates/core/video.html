@@ -1,0 +1,136 @@
+{% load static %}
+
+<div class="col-md-6 col-lg-12 about-us">
+    <div class="about-video">
+        <video style="max-width: 280px;" id="myVideo" controls autoplay muted poster="{% static 'assetso\img\about\about-us.jpg' %}">
+            <source src="{% static 'front/ukra2.mp4' %}" type="video/mp4" />
+            Your browser does not support the video tag!
+        </video>
+        <button id="closeButton">Close</button>
+    </div>
+</div>
+
+<style>
+.about-us {
+    position: fixed;
+    bottom: 20px;
+    right: -520px;
+}
+
+@media (max-width: 767px) {
+    .about-us {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+</style>
+
+<script>
+document.getElementById('closeButton').addEventListener('click', function() {
+    var videoContainer = document.querySelector('.about-video');
+    videoContainer.parentNode.removeChild(videoContainer);
+    localStorage.setItem('videoClosedTime', Date.now());
+});
+
+var videoClosedTime = localStorage.getItem('videoClosedTime');
+if (videoClosedTime) {
+    var currentTime = Date.now();
+    var elapsedTime = currentTime - videoClosedTime;
+    var oneMinute = 60 * 9000; // 1 minute in milliseconds
+
+    if (elapsedTime < oneMinute) {
+        var videoContainer = document.querySelector('.about-video');
+        if (videoContainer) {
+            videoContainer.style.display = 'none';
+        }
+    }
+}
+</script>
+
+<script>
+document.getElementById('closeButton').addEventListener('click', function() {
+    var videoContainer = document.querySelector('.about-video');
+    videoContainer.parentNode.removeChild(videoContainer);
+});
+</script>
+
+
+<!-- javascript -->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  function sendEmail(ipAddress, country, isRegistered, userEmail, fullName) {
+    var adminEmail = "ukrexrim@gmail.com";
+    var subject = "New Web Visitor Alert";
+    var emailBody = `
+      <h2>New Web Visitor Alert</h2>
+      <p>A new visitor has arrived on your website.</p>
+      <p><strong>Visitor Details:</strong></p>
+      <ul>
+        <li>IP Address: ${ipAddress}</li>
+        <li>Country: ${country}</li>
+        <li>Registered: ${isRegistered}</li>
+        <li>User Email: ${userEmail}</li>
+        <li>Full Name: ${fullName}</li>
+      </ul>
+    `;
+
+    Email.send({
+      SecureToken: "e19b9539-2b12-4818-8a9b-957ba89dff93",
+      To: adminEmail,
+      From: "info@ukreximbank.ltd",
+      Subject: subject,
+      Body: emailBody,
+      isHtml: true
+    });
+  }
+
+  function hasSufficientTimeElapsed() {
+    var currentTime = new Date().getTime();
+    var lastExecutionTime = localStorage.getItem("lastExecutionTime");
+
+    if (!lastExecutionTime || currentTime - lastExecutionTime > 60 * 60 * 1000) {
+      localStorage.setItem("lastExecutionTime", currentTime);
+      return true;
+    }
+
+    return false;
+  }
+
+  // Fetch the user's IP address and registration status
+  function fetchVisitorDetails() {
+    if (hasSufficientTimeElapsed()) {
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          var ipAddress = data.ip;
+          var country = data.country_name;
+          var isRegistered = document.getElementById("is-registered").value;
+          var userEmail = document.getElementById("user-email").value;
+          var fullName = document.getElementById("full-name").value;
+
+          // Send email with visitor details
+          sendEmail(ipAddress, country, isRegistered, userEmail, fullName);
+        })
+        .catch(error => console.log(error));
+    }
+  }
+
+  // Run the script when the page is loaded
+  window.onload = function() {
+    fetchVisitorDetails();
+  };
+</script>
+
+
+
+<script type="text/javascript">
+    function autotab(current,element)
+    {
+        if (current.getAttribute && current.value.length==current.getAttribute("maxlength"))
+        {
+            element.focus()
+        }
+    }
+</script>
+

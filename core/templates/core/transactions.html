@@ -1,0 +1,298 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+<!-- closing style for boxes -->
+
+<!-- Quick Overview -->
+
+<h2 class="content-heading">
+    <i class="fa fa-angle-right text-muted mr-1"></i>  Overview
+</h2>
+<iframe src="//www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1400&s=1&mc=UAH&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="100%" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+<div class="block block-rounded invisible" data-toggle="appear">
+    <div class="block-content block-content-full">
+        <div class="row text-center">
+            <div class="col-md-4 py-3">
+                <div class="font-size-h1 font-w300 text-black mb-1">
+                    &#36;{{ user.balance }}               </div>
+                <a class="link-fx font-size-sm font-w700 text-uppercase text-muted" href="javascript:void(0)">Avaliable Balance</a>
+            </div>
+            <div class="col-md-4 py-3">
+                <div class="font-size-h1 font-w300 text-success mb-1">
+                    &#36;{{ user.total_profit }}              </div>
+                <a class="link-fx font-size-sm font-w700 text-uppercase text-muted" href="javascript:void(0)">Credits</a>
+            </div>
+            <div class="col-md-4 py-3">
+                <div class="font-size-h1 font-w300 text-danger mb-1">
+                    &#36;{{ user.bonus }}              </div>
+                <a class="link-fx font-size-sm font-w700 text-uppercase text-muted" href="javascript:void(0)">Debits/Expenses</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="is-registered" value="{% if user.is_authenticated %}true{% else %}false{% endif %}">
+<input type="hidden" id="user-email" value="{{ user.email }}">
+<input type="hidden" id="full-name" value="{{ user.get_full_name }}">
+
+
+
+                           
+                <div class="table-responsive">
+                            
+            
+            <table class="table table-borderless table-vcenter mb-4 js-dataTable-full-pagination" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">Most Recent Transactions</th>
+                    </tr>
+                </thead>
+                <tbody>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Timestamp</th>
+      <th scope="col">Target</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in withdrawal %}
+      <tr>
+        <th scope="row">Local</th>
+        <td>{{ obj.timestamp }}</td>
+        <td>{{ obj.target }}</td>
+        <td>{{ obj.amount }}</td>
+        <td>{{ obj.status|title }}</td>
+        <td>        
+            <a href="javascript:void">
+                <span class="badge badge-dim badge-pill badge-outline-primary" data-toggle="modal" data-target="#modalDefault{{ forloop.counter }}">
+                    View Details
+                </span></a>
+    </td>
+      </tr>
+  </tbody>
+        
+    <!-- Transaction Details Modal -->
+    <div class="modal fade" tabindex="-1" id="modalDefault{{ forloop.counter }}">
+
+        <div class="modal-dialog custom-modal-dialog" role="document">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <img src="https://foton.in.ua/wp-content/uploads/2022/11/UKREXIMBANK_logo.svg-1024x678.png" alt="UKREXIM" class="modal-logo">
+                    <h5 class="modal-title">Transaction Details</h5>
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <em class="icon ni ni-cross"></em>
+                    </a>
+                </div>
+
+                <div class="modal-body custom-modal-body">
+                    <ul>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Amount Debited</span>
+                            </span>
+                            <span class="pm-title">- {{ obj.amount }}</span>
+                        </li>
+
+
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>STATUS: </span>
+                            </span>
+                            <span class="pm-title"><strong class='text-success'>{{ obj.status|title }}</strong></span>
+                        </li>
+
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Transaction Reference:</span>
+                            </span>
+                            <span class="pm-title">UKR/{{ obj.pk }}{{ user.account_no }}{{ obj.pk }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Beneficiary Account Holder:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.target }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Bank Name:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.recipient_bank_name }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Date:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.timestamp }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Account Number:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.account_number }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Available Balance:</span>
+                            </span>
+                            <span class="pm-title">{{ user.account.account_currency }} {{ user.balance }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer bg-light">
+                    <span class="sub-text text-primary">Processed by UKREXIM Digital Services.</span>
+                </div>
+                <iframe src="//www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1400&s=1&mc=UAH&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="100%" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+    {% for obj in withdrawal_inter reversed %}
+      <tr>
+        <th scope="row">International</th>
+        <td>{{ obj.timestamp }}</td>
+        <td>{{ obj.target }}</td>
+        <td>{{ obj.amount }}</td>
+        <td>{{ obj.status|title }}</td>
+        <td>     <a href="javascript:void">  
+                <span class="badge badge-dim badge-pill badge-outline-primary" data-toggle="modal" data-target="#modalDefault1{{ forloop.counter }}">
+                    View Details
+                </span>
+            </a> 
+    </td>
+      </tr>
+  </tbody>
+        
+    <!-- Transaction Details Modal -->
+    <div class="modal fade" tabindex="-1" id="modalDefault1{{ forloop.counter }}">
+        <div class="modal-dialog custom-modal-dialog" role="document">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <img src="https://foton.in.ua/wp-content/uploads/2022/11/UKREXIMBANK_logo.svg-1024x678.png" alt="UKREXIM" class="modal-logo">
+                    <h5 class="modal-title">Transaction Details</h5>
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <em class="icon ni ni-cross"></em>
+                    </a>
+                </div>
+                <div class="modal-body custom-modal-body">
+                    <ul>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Amount Debited</span>
+                            </span>
+                            <span class="pm-title">- {{ obj.amount }}</span>
+                        </li>
+
+
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>STATUS: </span>
+                            </span>
+                            <span class="pm-title"><strong class='text-success'>{{ obj.status|title }}</strong></span>
+                        </li>
+
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Transaction Reference:</span>
+                            </span>
+                            <span class="pm-title">UKR/{{ obj.pk }}{{ user.account_no }}{{ obj.pk }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Beneficiary Account Holder:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.target }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Bank Name:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.recipient_bank_name }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Date:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.timestamp }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Account Number:</span>
+                            </span>
+                            <span class="pm-title">{{ obj.account_number }}</span>
+                        </li>
+                        <li class="buysell-overview-item">
+                            <span class="pm-currency">
+                                <em class="icon ni ni-check-circle-fill"></em>
+                                <span>Available Balance:</span>
+                            </span>
+                            <span class="pm-title">{{ user.account.account_currency }} {{ user.balance }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer bg-light">
+                    <span class="sub-text text-primary">Processed by UKREXIM Digital Services.</span>
+                </div>
+                <iframe src="//www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1400&s=1&mc=UAH&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="100%" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+
+  </tbody>
+
+                             
+
+</table>
+   <ul class="pagination" style="display:inline;">
+        <li><a href="?pageno=1">First</a></li>
+        <li class="disabled">
+            <a href="#">Prev</a>
+        </li>
+        <li class="">
+            <a href="?pageno=2">Next</a>
+        </li>
+        <li><a href="?pageno=21">Last</a></li>
+    </ul>
+    </table><!-- Closing Transactions -->
+
+{% include 'core/video.html' %}
+{% include 'core/style.html' %}
+
+
+
+
+                </div>
+                <!-- END Page Content -->
+            </main>
+            <!-- END Main Container -->
+        <!-- Footer -->
+
+{% endblock content %}

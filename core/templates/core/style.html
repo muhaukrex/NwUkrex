@@ -1,0 +1,114 @@
+{% load static %}
+
+    <style>
+        td, td.sorting_1 {
+            padding: 0 !important;
+        }
+    </style>
+
+
+<style>
+            .custom-modal-dialog {
+                border: 5px solid transparent; /* Transparent initial outline */
+                border-radius: 10px;
+                animation: outlineAnimation 10s linear infinite; /* Use the "outlineAnimation" for the animation */
+            }
+
+            @keyframes outlineAnimation {
+                0% {
+                    border-color: rgba(0, 0, 255, 0.7); /* Start with a blue outline (70% opacity) */
+                    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Blue glowing effect */
+                }
+                25% {
+                    border-color: rgba(0, 255, 0, 0.7); /* Transition to green */
+                    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green glowing effect */
+                }
+                50% {
+                    border-color: rgba(255, 255, 0, 0.7); /* Transition to yellow */
+                    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5); /* Yellow glowing effect */
+                }
+                75% {
+                    border-color: rgba(255, 165, 0, 0.7); /* Transition to orange */
+                    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* Orange glowing effect */
+                }
+                100% {
+                    border-color: rgba(255, 0, 0, 0.7); /* End with a red outline (70% opacity) */
+                    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Red glowing effect */
+                }
+            }
+
+            .custom-modal-content {
+                background-color: #F2F2F2; /* Light grey background color for the modal content */
+                border: none; /* Remove the default border */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add a subtle shadow with more depth */
+            }
+
+            .custom-modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: linear-gradient(90deg, #007bff, #00a8ff); /* Vibrant gradient background for the header */
+                padding: 20px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                color: white; /* Text color in the header */
+            }
+
+            .modal-logo {
+                max-height: 60px; /* Slightly larger logo for a bolder appearance */
+                margin-right: 20px; /* Adjust the margin as needed */
+            }
+
+            .custom-modal-body {
+                padding: 30px; /* More spacing for content */
+            }
+
+            .custom-modal-footer {
+                background: linear-gradient(90deg, #00a8ff, #007bff); /* Gradient background for the footer */
+                border-top: 2px solid rgba(0, 0, 255, 0.5); /* Blue top border with 50% opacity */
+                padding: 20px; /* More spacing in the footer */
+            }
+        </style>
+
+    
+<style>
+ .btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    }
+
+    .btn-group button:not(:last-child) {
+      border-right: none; /* Prevent double borders */
+    }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+      background-color: #3e8e41;
+    }
+    ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {display: inline;}
+
+    ul.pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+</style>
+ 

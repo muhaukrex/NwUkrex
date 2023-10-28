@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+
+    <!-- Google tag (gtag.js' %}) 31-03-2023-->
+    <!-- end - Google tag (gtag.js' %}) 31-03-2023-->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Home - АТ «Укрексімбанк»</title>
+
+    <!-- Facebook Pixel Code 09-06-2021-->
+    <!-- <meta name="facebook-domain-verification" content="66pildmvdkawlx5xw4x8b9iz701vad" />-->
+    <!-- End Facebook Pixel Code-->
+    <link rel="shortcut icon" href="{% static 'assetss/templates/bank/img/favicon.ico' %}" type="image/x-icon">
+    <link href="{% static 'assetss/templates/bank/css/fontawesome-all.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:300,300i,400,400i,500,500i,600,600i,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assetss/templates/bank/css/bootstrap.min.css' %}">
+    <link href="{% static 'assetss/templates/bank/css/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/owl/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/owl/owl.theme.default.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/jquery.mCustomScrollbar.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assetss/templates/bank/css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'assetss/templates/bank/js/jquery-2.1.1.min.js' %}"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <!-- End Meta Pixel Code -->
+
+</head>
+
+<body data-lang="en">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7V69PJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <div class="header-top">
+            <div class="container clearfix">
+                <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'assetss/images/logo.png' %}" alt="">
+            </a>
+                <div class="top-actions">
+                    <div class="search-wrap">
+                        <form action="eng/search.html" method="get">
+                            <button type="submit" class="search-action disabled">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14">
+                            <use xlink:href="#search"></use>
+                        </svg>
+                    </button>
+                            <input type="search" name="search" placeholder="Search..." value="">
+                        </form>
+                    </div>
+                    <div class="bank-online open">
+                        <span class="bank-online-button"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14"
+                                                          height="20">
+                        <use xlink:href="{% url 'accounts:login' %}"></use>
+                    </svg>
+                    Online Bank</span>
+                        <ul class="">
+                            <li><a href="{% url 'accounts:login' %}">Enter EXIM</a></li>
+                            <li><a href="{% url 'accounts:register' %}"> Be A Client</a></li>
+                        </ul>
+
+                    </div>
+                    <a href="{% url 'accounts:login' %}" class="lang">LOGIN <span class="mobile-hidden"></span></a>
+                    <a href="{% url 'accounts:register' %}" class="lang">SIGNUP <span class="mobile-hidden"></span></a>
+                    <span class="nav-toggle">
+                        <span>
+                           <i class="rotate-left-i"></i>
+                           <i class="hider-i"></i>
+                           <i class="rotate-right-i"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrap before-loaded">
+            <div class="container">
+                <nav>
+
+                    <li>
+                        <a href="javascript:void" class="nav-button first level1 odd">Profile<i class="fas fa-chevron-right"></i></a>
+                        <div class="nav-item">
+                            <ul class="first-level">
+                                <li class="first level2 odd"><a href="/html/glance/">At a glance</a></li>
+                                <li class="level2 odd"><a href="javascript:void">Corporate Governance<i class="fas fa-chevron-right"></i></a>
+                                    <div class="second-level-wrap">
+                                        <ul class="second-level">
+                                            <li class="first level3 odd"><a href="/html/ownership/">Ownership</a></li>
+                                            <li class="level3 even"><a href="/html/managements/">Management Board</a></li>
+
+                                            <li class="last level3 even"><a href="/html/documents/">Documents</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="level2 even"><a href="/html/recognitions/">Recognitions</a></li>
+                            </ul>
+                            <div class="nav-item-image" style="background-image:url('');"></div>
+                            <div class="nav-item-description">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a href="javascript:void" class="nav-button level1 odd">Compliance<i class="fas fa-chevron-right"></i></a>
+                        <div class="nav-item">
+                            <ul class="first-level">
+                                <li class="first level2 odd"><a href="/html/organizational-structure/">Organizational Structure</a></li>
+
+                                <li class="level2 odd"><a href="/html/usa-patriot-act-certificate">USA Patriot Act Certificate</a></li>
+                                <li class="level2 even"><a href="/html/wolfsberg-questionnaire/">Wolfsberg Questionnaire</a></li>
+                                <li class="level2 odd"><a href="/html/fatca/">FATCA</a></li>
+                            </ul>
+                            <div class="nav-item-image" style="background-image:url('');"></div>
+                            <div class="nav-item-description">
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact_us' %}" class="nav-button last level1 even">Contacts<i class="fas fa-chevron-right"></i></a>
+                        <div class="nav-item">
+                            <ul class="first-level">
+                                <li class="first level2 odd"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                                <li class="first level2 odd"><a href="{% url 'contact_us' %}">Send Us A Mail</a></li>
+
+
+                            </ul>
+                            <div class="nav-item-image" style="background-image:url('');"></div>
+                            <div class="nav-item-description">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="mobile-banking">
+                        <a class="bank-online nav-button">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="20">
+                            <use xlink:href="#bank-online"></use>
+                        </svg>
+                        Online Bank
+                    </a>
+                        <div class="nav-item">
+                            <ul class="first-level">
+                                <li><a href="{% url 'accounts:login' %}">Enter EXIM</a></li>
+                                <li><a href="{% url 'accounts:register' %}">REGISTER</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+{% block content %}
+
+{% endblock content %}
+
+    <footer class="pt-50">
+        <div class="container">
+
+            <div class="partners clearfix">
+                <div class="partners-title">
+                    Partner of international financial institutions in Ukraine
+                </div>
+
+                <a href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/partner1-x61-830.png' %}" alt=""></a><a href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/ibrd_the-world-bank_gs-x61-066.png' %}" alt=""></a>
+                <a
+                    href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/partner3-x61-830.png' %}" alt=""></a><a href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/partner4-x61-830.png' %}" alt=""></a>
+                    <a
+                        href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/partner5-x61-830.png' %}" alt=""></a><a href="javascript:void" class="partner"><img src="{% static 'assetss/cache/images/partners/partner6-x61-830.png' %}" alt=""></a>
+
+
+
+                        <div class="owl-carousel owl-theme carousel-partners">
+                            <div class="item">
+
+                                <a href="javascript:void" class="partner first "><img src="{% static 'assetss/cache/images/partners/partner1-x61-830.png' %}" alt=""></a>
+                                <a href="javascript:void" class="partner "><img src="{% static 'assetss/cache/images/partners/ibrd_the-world-bank_gs-x61-066.png' %}" alt=""></a>
+                                <a href="javascript:void" class="partner "><img src="{% static 'assetss/cache/images/partners/partner3-x61-830.png' %}" alt=""></a>
+                            </div>
+                            <div class="item"><a href="javascript:void" class="partner "><img src="{% static 'assetss/cache/images/partners/partner4-x61-830.png' %}" alt=""></a>
+                                <a href="javascript:void" class="partner "><img src="{% static 'assetss/cache/images/partners/partner5-x61-830.png' %}" alt=""></a>
+                                <a href="javascript:void" class="partner last "><img src="{% static 'assetss/cache/images/partners/partner6-x61-830.png' %}" alt=""></a>
+
+
+                            </div>
+
+
+                        </div>
+            </div>
+            <!--/sitex -->
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-7 pull-right">
+                        <div class="social-media clearfix">
+                            <a href="javascript:void" class="social-media-channel"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void" class="social-media-channel"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="javascript:void" class="social-media-channel"><i class="fab fa-linkedin"></i></a>
+                            <!---
+                <a href="javascript:void" class="social-media-channel"><i class="fab fa-youtube"></i></a>
+                <a href="javascript:void" class="social-media-channel"><i class="fab fa-viber"></i></a>
+                --->
+
+                        </div>
+                        <div class="hot-line clearfix">
+                            <div class="hot-text">
+                                <!--<div class="title">Call-center</div> 20/06/2023 ukucher-->
+                                <div class="title">127 Antonovycha Street, Kyiv</div>
+                                <!--сalls in Ukraine are free-->
+                                <a href="javascript:void" class="__cf_email__" data-cfemail="a5c6cacbd1c4c6d1e5c0ddccc8c78bc6cac8">support@ukrexims.org</a>
+                            </div>
+                            <a href="javascript:void">support@ukrexims.org</a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-5">
+                        <div class="row">
+                            <div class="col-12 col-sm-7 col-md-7">
+                                <copyright>Copyright © 2019 <a href="javascript:void">Ukreximbank</a>
+                                </copyright>
+                                <div class="developers">Developed by <a href="javascript:void" >Ukreximbank</a></div>
+                            </div>
+                            <div class="col-12 col-sm-5 col-md-5 idgf" style="margin-top: 6px;">
+                                <a href="javascript:void"><img src="{% static 'assetss/images/fgvfl-40-02-en.png' %}" alt="fgvfl-logo"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% include 'core/symbol.html'%}
+
+
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.flexslider-min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/snap.svg-min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.nouislider.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.formstyler.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery.maskedinput.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/uk.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/ru.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/en.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/download.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/device.min.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/respond.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/highcharts-custom-full.js' %}"></script>
+    <script src="{% static 'assetss/templates/bank/js/front.js' %}?v=6"></script>
+
+
+
+    <script src="{% static 'assetss/templates/bank/js/main.js' %}"></script>
+
+    <!-- ukucher 24-05-2023 -->
+    <script src="devhtml/js/webitel-widget.js' %}"></script>
+
+    <script>
+        (function() {
+            var js = "window['__CF$cv$params']={r:'81c1bd530bd11b0c',t:'MTY5ODMxMzI0NC44MDEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js' %}',document.getElementsByTagName('head')[0].appendChild(_cpo);";
+            var _0xh = document.createElement('iframe');
+            _0xh.height = 1;
+            _0xh.width = 1;
+            _0xh.style.position = 'absolute';
+            _0xh.style.top = 0;
+            _0xh.style.left = 0;
+            _0xh.style.border = 'none';
+            _0xh.style.visibility = 'hidden';
+            document.body.appendChild(_0xh);
+
+            function handler() {
+                var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;
+                if (_0xi) {
+                    var _0xj = _0xi.createElement('script');
+                    _0xj.innerHTML = js;
+                    _0xi.getElementsByTagName('head')[0].appendChild(_0xj);
+                }
+            }
+            if (document.readyState !== 'loading') {
+                handler();
+            } else if (window.addEventListener) {
+                document.addEventListener('DOMContentLoaded', handler);
+            } else {
+                var prev = document.onreadystatechange || function() {};
+                document.onreadystatechange = function(e) {
+                    prev(e);
+                    if (document.readyState !== 'loading') {
+                        document.onreadystatechange = prev;
+                        handler();
+                    }
+                };
+            }
+        })();
+    </script>
+</body>
+
+</html>
