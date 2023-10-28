@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'core',
     'transactions',
     'bankcard',
-    'rest_framework',
-    'corsheaders',
     'storages'
 ]
 
@@ -48,7 +46,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    "corsheaders.middleware.CorsMiddleware",
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -184,19 +181,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 django_heroku.settings(locals())
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
-
-
-
-# settings.py
-
-# Use the SMTP backend
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# Set your Elastic Email SMTP server settings
-EMAIL_HOST = 'smtp.elasticemail.com'
-EMAIL_PORT = 2525  # Use Elastic Email's SMTP port
-EMAIL_HOST_USER = 'main@ukrexims.org'  # Your Elastic Email username
-EMAIL_HOST_PASSWORD = 'DD3A983D07203BDF829832A5B53C2CDCEA64'  # Your Elastic Email password
-EMAIL_USE_TLS = True  # Use TLS for a secure connection
 
