@@ -1,0 +1,155 @@
+{% extends 'core/basser.html' %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<br><br><br><br><br>
+
+
+<head>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .choice-container {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .choice-label {
+            font-weight: bold;
+        }
+
+        .select-container {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Personal Details</h2>
+    <hr>
+    <form method="post" enctype="multipart/form-data" id="registerForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ user_form.username.id_for_label }}">Username</label>
+            {{ user_form.username }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.first_name.id_for_label }}">First Name</label>
+            {{ user_form.first_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.last_name.id_for_label }}">Last Name</label>
+            {{ user_form.last_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.email.id_for_label }}">Email Address</label>
+            {{ user_form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.password1.id_for_label }}">Password</label>
+            {{ user_form.password1 }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.password2.id_for_label }}">Confirm Password</label>
+            {{ user_form.password2 }}
+        </div>
+        <div class="form-group">
+            <label for="{{ user_form.contact_no.id_for_label }}">Phone Number</label>
+            {{ user_form.contact_no }}
+        </div>
+        
+        <h2>Account Details</h2>
+        <hr>
+        <div class="select-container">
+            <div class="choice-label">Gender</div>
+            {{ account_form.gender }}
+        </div>
+        <div class="select-container">
+            <div class="choice-label">Account Type</div>
+            {{ account_form.account_type }}
+        </div>
+        <div class="form-group">
+            <label for="{{ account_form.picture.id_for_label }}">Passport Photograph</label>
+            <img src="{% static 'assets/passport/sample.png' %}" style="width:100%; height:180px;" id="output_image">
+            {{ account_form.picture }}
+        </div>
+        
+        <h2>Address Details</h2>
+        <hr>
+        <div class="form-group">
+            <label for="{{ address_form.postal_code.id_for_label }}">Postal Code</label>
+            {{ address_form.postal_code }}
+        </div>
+        <div class="choice-container">
+            <p class="choice-label">Country</p>
+            {{ address_form.country }}
+        </div>
+        <div class="form-group">
+            <label for="{{ address_form.state.id_for_label }}">State</label>
+            {{ address_form.state }}
+        </div>
+        <div class="form-group">
+            <label for="{{ address_form.street_address.id_for_label }}">Street Address</label>
+            {{ address_form.street_address }}
+        </div>
+        <div class="form-group">
+            <label for="{{ address_form.religion.id_for_label }}">Religion</label>
+            {{ address_form.religion }}
+        </div>
+        
+        <!-- Error Messages -->
+        {% if user_form.errors %}
+            <div class="error">{{ user_form.errors }}</div>
+        {% endif %}
+        {% if account_form.errors %}
+            <div class="error">{{ account_form.errors }}</div>
+        {% endif %}
+        {% if address_form.errors %}
+            <div class="error">{{ address_form.errors }}</div>
+        {% endif %}
+        <div id="registerResult"></div>
+        <div class="submit-button">
+            <button type="submit" class="btn btn-primary" id="btn"><i class="fas fa-check"></i> Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+{% endblock content %}

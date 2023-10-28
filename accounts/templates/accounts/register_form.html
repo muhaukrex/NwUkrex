@@ -1,0 +1,147 @@
+{% extends 'core/basser.html' %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<br>
+<style>
+    /* Style the select box container */
+.select-container {
+    position: relative;
+}
+
+/* Style the select box */
+.select-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative; /* Required for z-index */
+    z-index: 1; /* Ensure the dropdown is above other elements */
+    background-color: #fff; /* Set the background color to solid */
+}
+
+/* Style the select options */
+.select-box option {
+    padding: 5px;
+}
+
+/* Style the dropdown arrow */
+.select-box::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%; /* Position the arrow in the middle */
+    right: 10px;
+    transform: translateY(-50%); /* Vertically center the arrow */
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* Style on focus */
+.select-box:focus {
+    outline: none;
+    border-color: #007bff; /* Change the border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a box shadow on focus */
+}
+
+</style>
+
+    <!-- Login Section -->
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-8 col-md-12">
+                <div class="login-content">
+                    <div class="logo">
+                        <a href="#"><img src="https://www.regxsa.com/aml-updates/wp-content/uploads/2019/11/images-18.jpeg" alt="Logo" style="max-width: 30px;"></a>
+                    </div>
+                    <div class="title">
+                        <h2>👋 Welcome !</h2>
+                        <p>Sign Up to continue with UKREXIM User Panel</p>
+                    </div>
+
+                    <form method="POST" action="" enctype="multipart/form-data" class="login-form">
+                        {% csrf_token %}
+                        {{ user_form|crispy }}
+                        {{ account_form|crispy }}
+                        {{ address_form|crispy }}
+                        <div class="form-field">
+                            <input class="form-check-input check-input" type="checkbox" name="remember" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+                        </div>
+
+                        <button type="submit" class="login-btn grad-btn w-100">Submit</button>
+                    </form>
+
+                    <div class="signup-text">
+                       <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+                    </div>
+
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Login Section End -->
+
+
+
+<style>
+    
+/* Add your CSS styling here */
+.login-section {
+    background-color: #f7f7f7;
+    padding: 50px 0;
+}
+
+.login-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    max-width: 30px;
+}
+
+.title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.form-field {
+    margin-top: 10px;
+}
+
+.login-btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.signup-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#google_translate_element {
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+{% endblock content %}
