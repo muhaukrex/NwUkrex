@@ -1,0 +1,218 @@
+/*
+ * 	Default theme - Owl Carousel CSS File
+ */
+
+.owl-theme {
+    position: relative;
+}
+
+.owl-theme .owl-nav {
+    margin-top: 0px;
+    height: 0;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-nav [class*='owl-'] {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border: none;
+    margin-top: -50px;
+    font-size: 0;
+    background: #ccc;
+    display: block;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.owl-theme .owl-nav [class*='owl-'] span {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.owl-theme .owl-nav [class*='owl-'] span:before,
+.owl-theme .owl-nav [class*='owl-'] span:after {
+    content: "";
+    position: absolute;
+    display: block;
+    background: #FFF;
+}
+
+.owl-theme .owl-nav [class*='owl-'] span:before {
+    height: 2px;
+    width: 100%;
+}
+
+.owl-theme .owl-nav [class*='owl-'] span:after {
+    height: 100%;
+    width: 2px;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-prev {
+    left: -85px;
+    padding-left: 7px;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-prev span:before {
+    bottom: 0;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-prev span:after {
+    left: 0;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-next {
+    right: -85px;
+    padding-right: 7px;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-next span:before {
+    top: 0;
+}
+
+.owl-theme .owl-nav [class*='owl-'].owl-next span:after {
+    right: 0;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover span {
+    -webkit-transform: rotate(45deg) scale(1.2);
+    -moz-transform: rotate(45deg) scale(1.2);
+    -o-transform: rotate(45deg) scale(1.2);
+    transform: rotate(45deg) scale(1.2);
+}
+
+.owl-theme .owl-nav .disabled {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    cursor: default;
+}
+
+.owl-theme .owl-nav .disabled:hover {
+    opacity: 0;
+}
+
+.owl-theme.markets-carousel .owl-nav [class*='owl-'] {
+    top: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 0px;
+    background: #ededed;
+    display: block;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -o-transition: background 0.3s;
+    transition: background 0.3s;
+}
+
+.owl-theme.markets-carousel .owl-nav [class*='owl-'] span {
+    width: 10px;
+    height: 10px;
+}
+
+.owl-theme.markets-carousel .owl-nav [class*='owl-'].owl-prev {
+    left: 100%;
+    margin-left: -81px;
+    padding-left: 5px;
+}
+
+.owl-theme.markets-carousel .owl-nav [class*='owl-'].owl-next {
+    right: 0;
+    padding-right: 5px;
+}
+
+.owl-theme.markets-carousel .owl-nav [class*='owl-']:hover {
+    background: #ccc;
+}
+
+.owl-theme .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    width: 100%;
+    font-size: 0;
+    margin-top: 10px;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    line-height: 20px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 28px;
+    height: 1px;
+    margin: 0 1px;
+    background: #ccc;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-backface-visibility: visible;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    height: 2px;
+    background: #214696;
+}
+
+@media (min-width: 1200px) {
+    .owl-theme.arrow-nav .owl-nav [class*='owl-'],
+    .owl-theme.arrow-dots .owl-nav [class*='owl-'] {
+        opacity: 0;
+        visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: scale(0.5, 0.5);
+        -moz-transform: scale(0.5, 0.5);
+        -o-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5);
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    .owl-theme.arrow-nav:hover .owl-nav [class*='owl-'],
+    .owl-theme.arrow-dots:hover .owl-nav [class*='owl-'] {
+        -webkit-transform: scale(1, 1);
+        -moz-transform: scale(1, 1);
+        -o-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/*# sourceMappingURL=owl.theme.default.css.map */
