@@ -126,13 +126,12 @@ function googleTranslateElementInit() {
         <!-- bg-body-light -->
         <div class="content-side content-side-full text-center ">
             <div class="smini-hide">
+                <strong style="font-style: bold; font-weight: 20px;">{{ user.account.account_type|title }} Account</strong> </a><br>
+
                 <img class="img-avatar" src="{{ user.account.picture.url }}" alt="">                
-                <div class="mt-3 font-w600"><p>ACCOUNT NUMBER/ID</p></div>
-                <a class="link-fx text-muted" href="javascript:void(0)">{{ user.account_no }}  </a><br>
+                <div class="mt-3 font-w600"><p>ACCOUNT NUMBER/ID<br>{{ user.account_no }} <br>{{ user.full_name|title  }}</p> </div>
                 <a class="link-fx text-muted font-w600" href="javascript:void(0)">
-                    <strong style="font-style: bold;">{{ user.full_name|title  }}</strong> </a><br>
                 <a class="link-fx text-muted" href="javascript:void(0)">
-                    <strong style="font-style: bold; font-weight: 20px;">{{ user.account.account_type|title }} Account</strong> </a>
             </div>
         </div>
         <!-- END Side Actions -->
@@ -310,176 +309,142 @@ function googleTranslateElementInit() {
                     <!-- style for the boxes -->
 
 <style>
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    /* Reset some default styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-/* Apply a modern font and background color to the body */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-}
+    /* Apply a modern font and background color to the body */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+    }
 
-/* Style the navbar container */
-.navbar {
-    background: linear-gradient(45deg, #00c700, #6c757d, rgba(108, 117, 125, 0.7)); /* Green-grey-transparent gradient */
-    color: #fff;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    padding: 15px 0;
-    border-bottom: 2px solid #ff5722; /* Bold bottom border */
-}
-
-/* Center the content in the container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Style the navbar content */
-.navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-/* Style the navbar title */
-.navbar-title {
-    font-size: 40px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Style the navbar links */
-.navbar-links {
-    list-style: none;
-    display: flex;
-}
-
-.navbar-links li {
-    margin-right: 20px;
-}
-
-/* Style the buttons */
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.4s;
-    font-weight: normal;
-}
-
-.btn-primary {
-    background: linear-gradient(45deg, #ff5722, #ff0000);
-    color: #fff;
-    border: 3px solid #ff5722;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-secondary {
-    background: linear-gradient(45deg, #6c757d, #636e72);
-    color: #fff;
-    border: 3px solid #6c757d;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Add hover effects to buttons */
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Add hover effects to primary button */
-.btn-primary:hover {
-    background: linear-gradient(45deg, #ff0000, #ff5722);
-    border: 3px solid #ff0000;
-}
-
-/* Add hover effects to secondary button */
-.btn-secondary:hover {
-    background: linear-gradient(45deg, #636e72, #6c757d);
-    border: 3px solid #636e72;
-}
-
-/* Media Query for Mobile */
-/* Media Query for Mobile */
-@media (max-width: 768px) {
+    /* Style the navbar container */
     .navbar {
-        background: transparent;
-        text-align: center;
-        padding: 10px 0;
+        background: linear-gradient(45deg, #00c700, #6c757d, rgba(108, 117, 125, 0.7)); /* Green-grey-transparent gradient */
+        color: #fff;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        padding: 15px 0;
+        border-bottom: 2px solid #ff5722; /* Bold bottom border */
     }
 
+    /* Center the content in the container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Style the navbar content */
     .navbar-content {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items vertically */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
     }
 
+    /* Style the navbar title */
     .navbar-title {
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
+    /* Style the navbar links */
     .navbar-links {
-        display: flex; /* Display buttons side by side */
-        justify-content: center; /* Center buttons horizontally */
+        list-style: none;
+        display: flex;
     }
 
     .navbar-links li {
-        margin: 0; /* Remove margin on list items */
+        margin-right: 20px;
     }
 
+    /* Style the buttons */
     .btn {
-        padding: 10px 20px;
-        margin: 0 10px; /* Add margin between buttons */
+        display: inline-block;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.4s;
+        font-weight: normal;
     }
-}
+
+    .btn-primary {
+        background: linear-gradient(45deg, #ff5722, #ff0000);
+        color: #fff;
+        border: 3px solid #ff5722;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+        background: linear-gradient(45deg, #6c757d, #636e72);
+        color: #fff;
+        border: 3px solid #6c757d;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add hover effects to buttons */
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Add hover effects to primary button */
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #ff0000, #ff5722);
+        border: 3px solid #ff0000;
+    }
+
+    /* Add hover effects to secondary button */
+    .btn-secondary:hover {
+        background: linear-gradient(45deg, #636e72, #6c757d);
+        border: 3px solid #636e72;
+    }
+
+    /* Media Query for Mobile */
+    /* Media Query for Mobile */
+    @media (max-width: 768px) {
+        .navbar {
+            background: transparent;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .navbar-content {
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items vertically */
+        }
+
+        .navbar-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .navbar-links {
+            display: flex; /* Display buttons side by side */
+            justify-content: center; /* Center buttons horizontally */
+        }
+
+        .navbar-links li {
+            margin: 0; /* Remove margin on list items */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 0 10px; /* Add margin between buttons */
+        }
+    }
 
 
 
 </style>
-
-
-<nav class="navbar">
-    <div class="container">
-        <div class="navbar-content">
-            <div class="navbar-header">
-                <h1 class="navbar-title" id="greeting">Your Logo</h1>
-            </div>
-            <ul class="navbar-links">
-                <li><a href="{% url 'transactions:payment_create' %}" class="btn btn-primary"><span>Deposit</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
-                <li><a href="{% url 'transactions:withdrawal' %}" class="btn btn-secondary"><span>Transfer </span> <em class="icon ni ni-arrow-long-right"></em></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-
-    <script>
-        // JavaScript code for dynamic greeting
-        var currentHour = new Date().getHours();
-        var greeting = "";
-
-        if (currentHour >= 5 && currentHour < 12) {
-            greeting = "Good Morning";
-        } else if (currentHour >= 12 && currentHour < 18) {
-            greeting = "Good Afternoon";
-        } else {
-            greeting = "Good Evening";
-        }
-
-        document.getElementById("greeting").innerText = greeting + " {{ user.full_name|title }}";
-    </script>
-
 
 <!-- closing style for boxes -->
 {% block content %}
