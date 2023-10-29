@@ -17,6 +17,7 @@ def home(request):
         withdrawal = Withdrawal.objects.filter(user=user)
         withdrawal_sum = withdrawal.aggregate(Sum('amount'))['amount__sum']
         withdrawal_inter = Withdrawal_internationa.objects.filter(user=user)
+        payment_inter = Payment.objects.filter(user=user)
         interest = Interest.objects.filter(user=user)
         interest_sum = interest.aggregate(Sum('amount'))['amount__sum']
 
@@ -27,6 +28,7 @@ def home(request):
             "withdrawal": withdrawal,
             "withdrawal_sum": withdrawal_sum,
             "withdrawal_inter": withdrawal_inter,
+            "payment_inter": payment_inter,
             "interest": interest,
             "interest_sum": interest_sum,
             "users": users,  # Added users to the context
