@@ -26,7 +26,7 @@ class Diposit(models.Model):
             MinValueValidator(Decimal('10.00'))
         ]
     )
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
 
     def __str__(self):
         return str(self.user)
@@ -59,7 +59,7 @@ class Withdrawal(models.Model):
         ]
     )
 
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 
@@ -126,7 +126,7 @@ class Withdrawal_internationa(models.Model):
         ]
     )
 
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 
@@ -175,7 +175,7 @@ class Interest(models.Model):
         decimal_places=2,
         max_digits=12,
     )
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
 
     def __str__(self):
         return str(self.user)
@@ -190,6 +190,9 @@ class LoanRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.email}: {self.amount} for {self.reason}"
+
+
+        
 
 class Payment(models.Model):
     PAYMENT_CHOICES = [
@@ -210,7 +213,7 @@ class Payment(models.Model):
     proof_of_pay = CloudinaryField("image", default=None)
     status = models.CharField(choices=STATUS_CHOICES, max_length=10, default='PENDING')
     date = models.DateTimeField(auto_now_add=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
 
     def __str__(self):
         return f"{self.user} paid {self.amount} via {self.payment_method}"
@@ -226,3 +229,4 @@ class Payment(models.Model):
     class Meta:
         verbose_name = "Manage Deposit/Payment"
         verbose_name_plural = "Manage Deposit/Payment"
+
