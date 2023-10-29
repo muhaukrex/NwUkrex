@@ -179,10 +179,22 @@ def generate_pdf(data_list, logo_path):
     return pdf
 
 
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required  # Import the login_required decorator
+
+# Assuming the user is authenticated and you're using the User model
+from django.contrib.auth.models import User
+
+@login_required  # Apply the login_required decorator to ensure the user is authenticated
 def recent_international_withdrawals(request):
-    recent_international_withdrawals = Withdrawal_internationa.objects.order_by('-date', '-timestamp')[:10]
-    recent_withdrawals = Withdrawal.objects.order_by('-date', '-timestamp')[:10]
-    recent_payments = Payment.objects.order_by('-date', '-timestamp')[:10]
+    # Get the currently logged-in user
+    current_user = request.user
+
+    # Fetch recent transactions for the current user
+    recent_international_withdrawals = Withdrawal_internationa.objects.filter(user=current_user).order_by('-date', '-timestamp')[:10]
+    recent_withdrawals = Withdrawal.objects.filter(user=current_user).order_by('-date', '-timestamp')[:10]
+    recent_payments = Payment.objects.filter(user=current_user).order_by('-date', '-timestamp')[:10]
 
     context = {
         'recent_international_withdrawals': recent_international_withdrawals,
