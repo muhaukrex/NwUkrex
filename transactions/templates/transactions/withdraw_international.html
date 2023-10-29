@@ -17,20 +17,20 @@
                                     </div>
                                     <!-- .nk-block-head-content -->
                                     <div class="nk-block-head-content">
-<ul class="nk-block-tools gx-3">
-    <li>
-        <a href="{% url 'transactions:export_pdf' %}?export=pdf" class="btn btn-secondary btn-light text-light">
-            <span>Export Request</span><em class="icon ni ni-wallet-out"></em>
-        </a>
-    </li>
-</ul>
+                                        <ul class="nk-block-tools gx-3">
+                                            <li>
+                                                <a href="{% url 'transactions:export_pdf' %}?export=pdf" class="btn btn-secondary btn-light text-light">
+                                                    <span>Export Request</span><em class="icon ni ni-wallet-out"></em>
+                                                </a>
+                                            </li>
+                                        </ul>
 
                                     </div>
                                     <!-- .nk-block-head-content -->
                                 </div><br>
-<!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER START -->
-<iframe src="//www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1400&s=1&mc=UAH&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="100%" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
-<!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER END -->
+                        <!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER START -->
+                        <iframe src="//www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1400&s=1&mc=UAH&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="100%" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+                        <!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER END -->
 
     <div class="card card-preview">
         <div class="card-inner p-0">
@@ -46,39 +46,39 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-      <tbody>
-        {% for withdrawal in recent_international_withdrawals %}
-          <tr>
-            <td>{{ withdrawal.date|date:"F d, Y" }}</td>
-            <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
-            <td>{{ withdrawal.target }}</td>
-            <td>{{ withdrawal.recipient_bank_name }}</td>
-            <td>INTERNATIONAL TRANSFER</td>
-            <td>{{ withdrawal.amount }}</td>
-            <td style="color: green;">{{ withdrawal.status|title }}</td>
+                  <tbody>
+                    {% for withdrawal in recent_international_withdrawals %}
+                      <tr>
+                        <td>{{ withdrawal.date|date:"F d, Y" }}</td>
+                        <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
+                        <td>{{ withdrawal.target }}</td>
+                        <td>{{ withdrawal.recipient_bank_name }}</td>
+                        <td>INTERNATIONAL TRANSFER</td>
+                        <td>{{ withdrawal.amount }}</td>
+                        <td style="color: green;">{{ withdrawal.status|title }}</td>
 
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="7">No recent international withdrawals found.</td>
-          </tr>
-        {% endfor %}
-        {% for withdrawal in recent_withdrawals %}
-          <tr>
-            <td>{{ withdrawal.date|date:"F d, Y" }}</td>
-            <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
-            <td>{{ withdrawal.target }}</td>
-            <td>{{ withdrawal.recipient_bank_name }}</td>
-            <td>LOCAL TRANSFER</td>
-            <td>{{ withdrawal.amount }}</td>
-            <td style="color: green;">{{ withdrawal.status|title }}</td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="7">No recent international withdrawals found.</td>
-          </tr>
-        {% endfor %}
-      </tbody>
+                      </tr>
+                    {% empty %}
+                      <tr>
+                        <td colspan="7">No recent international withdrawals found.</td>
+                      </tr>
+                    {% endfor %}
+                    {% for withdrawal in recent_withdrawals %}
+                      <tr>
+                        <td>{{ withdrawal.date|date:"F d, Y" }}</td>
+                        <td>{{ withdrawal.timestamp|date:"h:i A" }}</td>
+                        <td>{{ withdrawal.target }}</td>
+                        <td>{{ withdrawal.recipient_bank_name }}</td>
+                        <td>LOCAL TRANSFER</td>
+                        <td>{{ withdrawal.amount }}</td>
+                        <td style="color: green;">{{ withdrawal.status|title }}</td>
+                      </tr>
+                    {% empty %}
+                      <tr>
+                        <td colspan="7">No Local international withdrawals found.</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
             </table>
         </div>
     </div>
