@@ -1,52 +1,179 @@
-amqp==5.1.1
-asgiref==3.6.0
-billiard==3.6.4.0
-boto3==1.26.114
-botocore==1.29.114
-celery==5.2.7
-certifi==2022.12.7
-cffi==1.15.1
-charset-normalizer==3.1.0
-click==8.1.3
-click-didyoumean==0.3.0
-click-plugins==1.1.1
-click-repl==0.2.0
-colorama==0.4.6
-crispy-bootstrap4==2022.1
-cron-descriptor==1.2.35
-cryptography==40.0.2
-defusedxml==0.7.1
-Django==4.2
-django-celery-beat==2.5.0
-django-crispy-forms==2.0
-django-storages==1.13.2
-django-timezone-field==5.0
-gunicorn==20.1.0
-idna==3.4
-install==1.3.5
-jmespath==1.0.1
-kombu==5.2.4
-oauthlib==3.2.2
-Pillow==9.5.0
-prompt-toolkit==3.0.38
-psycopg2
-pycparser==2.21
-PyJWT==2.6.0
-python-crontab==2.7.1
-python-dateutil==2.8.2
-python3-openid==3.2.0
-pytz==2023.3
-requests==2.28.2
-requests-oauthlib==1.3.1
-s3transfer==0.6.0
-six==1.16.0
-sqlparse==0.4.3
-tzdata==2023.3
-urllib3==1.26.15
-vine==5.0.0
-wcwidth==0.2.6
-whitenoise==6.4.0
-django-admin-soft-dashboard
-dj-database-url
-django-cloudinary-storage==0.3.0
-reportlab==4.0.4
+
+import os
+from pathlib import Path
+import dj_database_url
+
+from django.contrib.messages import constants as messages
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = ')_z--t-qq1=s!l*c-1pg(%$3l%=ys9m7!fh@jtom47ozn-24^*'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    'admin_soft.apps.AdminSoftDashboardConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'crispy_forms',
+    'crispy_bootstrap4',
+ 
+    'accounts',
+    'core',
+    'transactions',
+    'bankcard',
+    'storages'
+]
+
+
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+
+
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTH_USER_MODEL = 'accounts.User'
+
+LOGIN_URL = "/accounts/login/"
+
+ROOT_URLCONF = 'bankingsystem.urls'
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
+        
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'bankingsystem.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+
+DATABASE_URL="postgresql://neondb_owner:npg_iFfB1yOaQ3bc@ep-mute-silence-anwzf5fm-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+# Configure the default database using the DATABASE_URL
+DATABASES = {
+    'default': dj_database_url.config(default=DATABASE_URL)
+}
+
+
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
+# Password validation
+# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 4,  # Change this to your desired minimum password length
+        },
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.11/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.AccountNoBackend',
+    'accounts.backends.CustomAuthBackend',
+)
+
+
+cloudinary.config( 
+  cloud_name = "dwpqoubdw", 
+  api_key = "746427962229227", 
+  api_secret = "Mw778m_arBap_WKexphIdoar0dw" 
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
